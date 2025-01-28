@@ -1,0 +1,26 @@
+server:
+  port: 9191
+
+spring:
+  pulsar:
+    client:
+      service-url: pulsar://localhost:6650
+    producer:
+      topic-name1: jt-plain-topic
+      topic-name2: jt-raw-topic
+    consumer:
+      subscription:
+        name: my-subscription
+      dead-letter-policy:
+        max-redeliver-count: 3
+        retry-letter-topic: jt-raw-topic-retry
+        dead-letter-topic: jt-raw-topic-dlq
+      retry-policy:
+        initial-delay: 500ms
+        max-delay: 5s
+        multiplier: 2.0
+    defaults:
+      type-mappings:
+        - messageType: com.personal.crud_pulsar.Customer
+          schema-info:
+            schema-type: JSON
