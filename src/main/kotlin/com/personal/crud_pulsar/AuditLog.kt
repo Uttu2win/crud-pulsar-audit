@@ -15,8 +15,8 @@ data class AuditLog(
     @Column(name = "description")
     val description: String,
 
-    @Column(name = "status_code") // Ensure this matches the column name in your table
-    val statusCode: Int, // Ensure this is a non-nullable field
+    @Column(name = "status_code")
+    val statusCode: Int,
 
     @Column(name = "timestamp")
     val timestamp: LocalDateTime = LocalDateTime.now()
